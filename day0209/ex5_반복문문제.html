@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .photo {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h2>shop의 이미지 1~34 까지의 이미지를 table 안에 넣는데 한줄에 6개씩 출력</h2>
+    <table border="1">
+        <caption><b>[shop 이미지들]</b></caption>
+        <script>
+            var p = "";
+            var img = 34;
+            var devide = 6;
+            var cnt = 6;
+            var j = 1;
+            for(var i = 0; i < (img % devide == 0 ? img / devide : img / devide + 1); i++){
+                p += "<tr>";
+                for(j; j <= cnt; j++) {
+                    if(j > img) break;
+                    if(j == 24) {
+                        p += `<td><img src ="../image/shop/${j}.gif" class="photo"></td>`;
+                    } else { 
+                        p += `<td><img src ="../image/shop/${j}.jpg" class="photo"></td>`;
+                    }
+                }
+                p += "</tr>";
+                cnt += 6;
+            }
+            document.write(p);
+        </script>
+    </table>
+</body>
+</html>

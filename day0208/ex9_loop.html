@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        body, body *{
+            font-size: 1.5rem;
+            font-family: 'Single Day';
+        }
+
+        .mycar{
+            width: 200px;
+            height: 130px;
+            margin: 15px;
+            border: 1px solid gray;
+        }
+        .food{
+            width: 200px;
+            height: 130px;
+        }
+        .box {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>구구단 5단 출력</h2>
+    <script>
+        for(var i = 1; i <= 9; i++){
+            // document.write(`5 X ${i} = ${5 * i}<br>`);
+            document.write("5 X " + i + " = " + 5 * i + "<br>");
+        }
+    </script>
+    <hr>
+    <h2>mycarimage 폴더에서 car1.png 부터 car10.png 까지 출력</h2>
+
+    <script>
+        var j = 1;
+        var cnt = 3;
+        for(var i = 1; i <= (15 % 3 == 0 ? 15 / 3 : 15 / 3 + 1); i++) {
+            document.write("<div class='box'>");
+            for(j; j <= cnt; j++) {
+                document.write(`<img src='../image/mycarimage/car${j}.png' class='mycar'>`);
+                // document.write("<img src='../image/mycarimage/car" + i + ".png' width = '200'> ");
+            }
+            document.write("</div>");
+            cnt += 3;
+        }
+    </script>
+
+    <h2>food 이미지에서 1.jpg ~ 12.jpg 까지 출력</h2>
+    <hr>
+    <script>
+        for(var i = 1; i <= 12; i++) {
+            document.write(`<img src='../image/food/${i}.jpg' class='food'>`)
+        }
+    </script>
+</body>
+</html>

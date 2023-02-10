@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+    body, body *{
+            font-size: 1.5rem;
+            font-family: 'Single Day';
+        }
+    </style>
+</head>
+<body>
+    <table border="1" style="width : 100%; border-collapse: collapse;">
+        <caption><b style = "font-size: 30px;">구구단 출력</b></caption>
+        <tr bgcolor = "lightgray">
+            <script>
+                for(var dan=2; dan <= 9; dan++){
+                    document.write(`<th>${dan}단</th>`);
+                }
+            </script>
+        </tr>
+            <script>
+                for(var i = 1; i <= 9; i++) {
+                    document.write(`<tr>`);
+                    for(var j = 2; j <= 9; j++) {
+                        document.write(`<td align="center";> ${j} * ${i} = ${j * i}`);
+                    }
+                    document.write(`</tr>`);
+                }
+            </script>
+    </table>
+        
+</body>
+</html>

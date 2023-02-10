@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .imgbox{
+            text-align: center;
+        }
+        .btnbox{
+            text-align: center;
+        }
+        #img{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        button{
+            margin-left: 50px;
+            margin-right: 50px;
+            width: 150px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="imgbox">
+        <img src="../image/moviestar/1.jpg" id="img" width="300">
+    </div>
+    <div class="btnbox">
+        <button type="button" id="small">작게</button>
+        <button type="button" id="big">크게</button>
+    </div>
+
+    <script>
+        var img = document.getElementById("img");
+        
+        document.getElementById("small").onclick=function() {
+            var down = img.getAttribute("width")
+            img.setAttribute("width", down - 10);
+        }
+        
+        document.getElementById("big").onclick=function() {
+            var up = img.getAttribute("width")
+            img.setAttribute("width", Number(up) + Number(10));
+        }
+    </script>
+</body>
+</html>

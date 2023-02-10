@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        body, body *{
+            font-size: 1.5rem;
+            font-family: 'Single Day';
+        }
+        .photo{
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            border-radius: 100px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        .box{
+            text-align: center;
+        }
+        .tablebox{
+            display: inline-block;
+        }
+</style>
+</html>
+</head>
+<body>
+    <script>
+        // 각종 데이터를 다양한 방법으로 배열에 담아보자
+        var arrphoto = new Array();
+        arrphoto.push("../image/food/10.jpg");
+        arrphoto.push("../image/food/1.jpg");
+        arrphoto.push("../image/shop/2.jpg");
+        arrphoto.push("../image/shop/27.jpg");
+        arrphoto.push("../image/animal/C8.png");
+
+        var arrtitle = ["햄마요덮밥", "샌드위치", "원피스", "투피스", "귀염둥이인형"];
+
+        var arrprice = new Array();
+        arrprice[0] = 11000;
+        arrprice[1] = 9000;
+        arrprice[2] = 35000;
+        arrprice[3] = 42000;
+        arrprice[4] = 19000;
+    </script>
+    <div class="box">
+        <table class="tablebox" border="1">
+            <caption><b style = "color: blue;">오늘 용돈 사용</b></caption>
+            <tr>
+                <th width = "60">번호</th><th>상품명</th><th>사진</th><th>가격</th>
+            </tr>
+            <script>
+                var s = "";
+                var pr = 0;
+                for(var idx in arrprice) {
+                    s += `
+                    <tr>
+                        <td>${Number(idx) + 1}</td>
+                        <td>${arrtitle[idx]}</td>
+                        <td><img src = "${arrphoto[idx]}" class = "photo"></td>
+                        <td>${arrprice[idx]}원</td>
+                    </tr>`;
+                    pr += arrprice[idx];
+                }
+                document.write(s);
+                
+            </script>
+        </table>
+        <script>
+            document.write("<h2>총 사용금액" + pr + "</h2>");
+        </script>
+    </div>
+</body>
+</html>

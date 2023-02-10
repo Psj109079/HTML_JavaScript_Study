@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .inputbox{
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .btnbox{
+            text-align: center;
+        }
+        #btn{
+            width: 150px;
+            height: 40px;
+            margin-bottom: 20px;
+        }
+        .resultbox{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="inputbox">
+        <span>이름 = </span>
+        <input type="text" id="name">
+    </div>   
+
+    <div class="inputbox">
+        <span>JAVA = </span>
+        <input type="text" id="java">
+    </div>
+
+    <div class="inputbox">
+        <span>HTML = </span>
+        <input type="text" id="html">
+    </div>
+
+    <div class="btnbox">
+        <button type="button" id="btn">결과확인</button>
+    </div>
+    <div class="resultbox">
+        <span id="result1"></span>
+        <span id="result2"></span>
+        <span id="result3"></span>
+        <span id="result4"></span>
+        <span id="result5"></span>
+    </div>
+    <script>
+        var s = document.getElementById("name");
+        var n1 = document.getElementById("java");
+        var n2 = document.getElementById("html");
+
+        n1.onblur=function() {
+            if(isNaN(this.value) == true) {
+                alert("숫자만 입력");
+                this.value="";
+                this.focus();
+            } else if(parseFloat(n1.value) > 100 || parseFloat(n1.value) < 0) {
+                alert("0 ~ 100까지 숫자 입력")
+                this.value="";
+                this.focus();
+            }
+        }
+        n2.onblur=function() {
+            if(isNaN(this.value) == true) {
+                alert("숫자만 입력");
+                this.value="";
+                this.focus();
+            } else if(parseFloat(n2.value) > 100 || parseFloat(n2.value) < 0) {
+                alert("0 ~ 100까지 숫자 입력")
+                this.value="";
+                this.focus();
+            }
+        }
+        document.getElementById("btn").onclick=function() {
+            var sum = Number(n1.value) + Number(n2.value);
+            // var sum = Number(n1.value + n2.value); 
+            document.getElementById("result1").innerText=s.value;
+            document.getElementById("result2").innerText='JAVA = ' + n1.value;
+            document.getElementById("result3").innerText='HTML = ' + n2.value;
+            document.getElementById("result4").innerText='합계 = ' + sum;
+            document.getElementById("result5").innerText='평균 = ' + sum / 2;
+        }
+
+    </script>
+</body>
+</html>

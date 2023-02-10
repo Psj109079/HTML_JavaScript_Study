@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        table td{
+            border: 1px solid black;
+            width: 100px;
+            height: 50px;
+        }
+        #one{
+            vertical-align: bottom;
+            background-color: red;
+            color: white;
+        }
+        #two{
+            text-align: center;
+            vertical-align: bottom;
+            background-color: orange;
+            color: white;
+        }
+        #three{
+            text-align: right;
+            vertical-align: bottom;
+            background-color: yellow;
+            color: white;
+        }
+        #four{
+            background-color: green;
+            color: white;
+        }
+        #five{
+            text-align: center;
+            background-color: blue;
+            color: white;
+        }
+        #six{
+            text-align: right;
+            background-color: navy;
+            color: white;
+        }
+        #seven{
+            vertical-align: top;
+            background-color: purple;
+            color: white;
+        }
+        #one:hover{
+            background-color: purple;
+            color: black;
+        }
+        #two:hover{
+            background-color: red;
+            color: black;
+        }
+        #three:hover{
+            background-color: orange;
+            color: black;
+        }
+        #four:hover{
+            background-color: yellow;
+            color: black;
+        }
+        #five:hover{
+            background-color: green;
+            color: black;
+        }
+        #six:hover{
+            background-color: blue;
+            color: black;
+        }
+        #seven:hover{
+            background-color: navy;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td rowspan="3" id="one">일</td>
+            <td colspan="3" id="two">이</td>
+        </tr>
+        <tr>
+            <td colspan="2" id="three">삼</td>
+            <td rowspan="3" id="four">사</td>
+        </tr>
+        <tr>
+            <td id="five">오</td>
+            <td id="six">육</td>
+        </tr>
+        <tr>
+            <td colspan="3" id="seven">칠</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body.black {
+            background-color: black;
+            color: white;
+        }
+        body.white {
+            background-color: white;
+            color: black;
+        }
+        body.border {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body id="target" class="white">
+    <div id="control">
+      <input type="button" value="white" id="white_btn" />
+      <input type="button" value="black" id="black_btn" />
+      <input type="button" value="border" id="border_btn" />
+    </div>
+</body>
+<script>
+    wbtn = document.getElementById("white_btn");
+    wbtn.addEventListener("click", function() {
+    document.getElementById("target").className = "white";
+    });
+
+    bbtn = document.getElementById("black_btn");
+    bbtn.addEventListener("click", function() {
+    document.getElementById("target").className = "black";
+    });
+
+    borderbtn = document.getElementById("border_btn");
+    borderbtn.addEventListener("click", function() {
+    document.getElementById("target").classList.add("border");
+    });
+</script>
+</html>
