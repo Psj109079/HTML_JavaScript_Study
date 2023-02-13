@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 구구단 숫자를 입력 후 엔터를 누르면 해당 구구단을 div 태그에 출력 하시오
+        단 조건 1 : 입력을 안하고 엔터를 누를 시 "숫자를 입력해주세요"
+           조건 2 : 숫자가 아닐경우 "숫자로만 입력해주세요" -->
+        <b>구구단 숫자입력</b><input type="text" id="gugu" style="width: 100px;">
+
+        <div id="result">
+            <script>
+                var multiple = document.getElementById("gugu");
+                
+                multiple.onkeyup=function(e) {
+                    if(e.keyCode==13) {
+                        if(isNaN(this.value)) {
+                            alert("숫자만 입력");
+                            this.value = "";
+                            this.focus();
+                        } else if(this.value == ""){
+                            alert("숫자를 입력해주세요");
+                            this.focus();
+                        } else if(this.value < 2 || this.value > 9) {
+                            alert("2 ~ 9까지 숫자 입력");
+                            this.value = "";
+                            this.focus();
+                        } else {
+                            var s = `[${this.value}단]<br><br>`;
+                            for(var i = 1; i <= 9; i++){
+                                s += `${this.value} * ${i} = ${this.value * i}<br>`;
+                            }
+                            document.getElementById("result").innerHTML = s;
+                        }
+                    }
+                    
+                }
+            </script>
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+       body, body *{
+        font-family: 'Single Day';
+       }
+    </style>
+</head>
+<body>
+    <div class="one">
+        <img src="../image/animal/C1.png" width="130">
+        <div class="two">
+            <h4>Have a Nice Day!!!!</h4>
+            <div class="three">
+                <img src="../image/food/11.jpg" width="100">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 고양이 사진에 마우스를 올리면 아래 글자의 속성을 변경(크기:30px, 배경색:lightgray,글자색"blue)
+        // 그리고 아래 빙수사진의 border 를 설정한다
+
+        var animal = document.querySelector(".one>img");
+        animal.onmouseover=function() {
+            this.nextElementSibling.firstElementChild.setAttribute("style", "font-size:30px; background-color:lightgray; color:blue;");
+            this.nextElementSibling.lastElementChild.firstElementChild.setAttribute("style", "border: 5px double pink");
+            
+        }
+        
+        // 마우스를 벗어나면 다시 추가한 스타일을 제거한다
+        animal.onmouseout=function() {
+            this.nextElementSibling.firstElementChild.setAttribute("style", "");
+            this.nextElementSibling.lastElementChild.firstElementChild.setAttribute("style", "");
+        }   
+    </script>
+</body>
+</html>
