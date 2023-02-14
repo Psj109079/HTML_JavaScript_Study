@@ -26,14 +26,14 @@
             background-color: aqua;
         }
         div.box {
-            display: flex;
+            display: flex; /*  flex 아이템들이 가로방향으로 배치되고 자신의 width만큼만 차지함*/
             width: 630px;
             height: 120px;
             background-color: white;
             margin-left: 20px;
             margin-top: 20px;
             border-radius: 100px;
-            /* flex일경우 수평방향 가운데 : */
+            
             /* justify-content: center; flex일 경우 수평방향 가운데 */
             justify-content: space-around;
             align-items: center; /* flex일경우 수직방향 가운데*/
@@ -80,7 +80,7 @@
                 for(let i = 0; i < lotto.length; i++) {
                     lotto[i].innerHTML = parseInt(Math.random() * 45) + 1;
                     for(let j = 0; j < i; j++) {
-                        if(lotto[i] == lotto[j]) {
+                        if(lotto[i].innerText == lotto[j].innerText) {
                             i--;
                             break;
                         }
