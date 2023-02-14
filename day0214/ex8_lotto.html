@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        body, body *{
+            font-family: 'Jua';
+        }
+        div.title {
+            font-size: 30px;
+            margin: 30px 30px;
+        }
+        div.title .num {
+            color: blue;
+
+        }
+        div.title .day {
+            color: red;
+            font-size: 22px;
+        }
+        body {
+            background-color: aqua;
+        }
+        div.box {
+            display: flex;
+            width: 630px;
+            height: 120px;
+            background-color: white;
+            margin-left: 20px;
+            margin-top: 20px;
+            border-radius: 100px;
+            /* flex일경우 수평방향 가운데 : */
+            /* justify-content: center; flex일 경우 수평방향 가운데 */
+            justify-content: space-around;
+            align-items: center; /* flex일경우 수직방향 가운데*/
+
+        }
+        .box .lotto {
+            font-size: 45px;
+            text-align: center;
+            height: 80px;
+            width: 80px;
+            line-height: 80px;
+            border-radius: 100px;
+            background-color: aquamarine;
+        }
+        #btnlotto {
+            width: 200px;
+            height: 60px;
+            margin: 30px 200px;
+            font-size: 23px;
+            cursor: pointer;
+        }
+        #btnlotto:hover{
+            background-color: black;
+            color: white;
+            box-shadow: 5px 5px 5px gray;
+        }
+    </style>
+    <script>
+        window.onload=function() {
+            let today = new Date();
+            let year = today.getFullYear();
+            let month = today.getMonth() + 1;
+            let day = today.getDate();
+            
+            document.querySelector("b.day").innerHTML = `${year} - ${month} - ${day}`;
+        
+            // 숫자 출력되는는곳의 요소값을 배열 형태로 얻기
+            var lotto = document.querySelectorAll("div.box>div.lotto");
+            
+            // 버튼 이벤트
+            document.getElementById("btnlotto").onclick=function(){
+                let nums = new Array(6);
+                
+                for(let i = 0; i < lotto.length; i++) {
+                    lotto[i].innerHTML = parseInt(Math.random() * 45) + 1;
+                    for(let j = 0; j < i; j++) {
+                        if(lotto[i] == lotto[j]) {
+                            i--;
+                            break;
+                        }
+                    }
+                    if(lotto[i].innerText > 40) {
+                        lotto[i].style.backgroundColor = "lightgreen";
+                    } else if(lotto[i].innerText > 30) {
+                        lotto[i].style.backgroundColor = "lightgray";
+                    } else if(lotto[i].innerText > 20) {
+                        lotto[i].style.backgroundColor = "pink";
+                    } else if(lotto[i].innerText > 10) {
+                        lotto[i].style.backgroundColor = "lightblue";
+                    } else {
+                        lotto[i].style.backgroundColor = "lightyellow";
+                    }
+                }
+                // 1 ~ 45 사이의 난수값을 6개 구한다
+                // for(let i = 0; i < nums.length; i++) {
+                //     nums[i] = parseInt(Math.random() * 45) + 1;
+                //     중복체크해서 다시 구한다
+                //     for(let j = 0; j < i; j++) {
+                //     if(nums[i] == nums[j]) {
+                //         i--;
+                //         break;
+                //         }
+                //     }
+                // }
+                                
+                // for(let idx in lotto) {
+                //     lotto[idx].innerHTML=nums[idx];
+                // }
+                                    
+            }
+        }
+        </script>
+</head>
+<body>
+    <div class="title"><b class="num">1025</b>회
+        <b class="day">0000-00-00</b></div>
+    
+    <div class="box">
+        <div class="lotto">1</div>
+        <div class="lotto">1</div>
+        <div class="lotto">1</div>
+        <div class="lotto">1</div>
+        <div class="lotto">1</div>
+        <div class="lotto">1</div>
+    </div>
+        <button type="button" id="btnlotto">로또 숫자 구하기</button>
+</body>
+</html>

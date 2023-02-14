@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        body, body *{
+        font-family: 'Jua';
+       }
+       .box{
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 5px;
+       }
+       #outputbox{
+            text-align: center;
+       }
+       #outputbox #output{
+            display: inline-block;
+            width: 500px;
+            height: 300px;
+            line-height: 300px;
+       }
+    </style>
+    <script>
+        window.onload=function(){
+            let out = document.getElementById("output");
+
+            document.getElementById("enter").onkeyup=function(e){
+                if(e.keyCode == 13) {
+                    out.innerText = this.value;
+                }
+            }
+
+            document.getElementById("check").onclick=function(){
+                if(this.checked){
+                    out.style.border = "5px groove gold";
+                }
+            }
+
+            let fontS = document.querySelectorAll(".fonts");
+            for(let i = 0; i < fontS.length; i++){
+                fontS[i].onclick=function(){
+                    out.style.fontSize= this.value;
+                }
+            }
+
+            document.getElementById("tcolor").onchange=function(){
+                out.style.color=this.value;
+            }
+
+            document.getElementById("bcolor").onchange=function(){
+                out.style.backgroundColor=this.value;
+            }
+
+            let fontF = document.querySelectorAll(".fontf");
+            for(let i = 0; i < fontF.length; i++){
+                fontF[i].onclick=function(){
+                    out.style.fontFamily = this.value;
+                }
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <div class="box">
+        입력 후 엔터를 누르세요 : <input type="text" id="enter">
+        <label><input type="checkbox" id="check">테두리</label>
+    </div>
+    <div class="box">
+        글자크기 : <label><input type="radio" value="10px" name="sfont" class="fonts">10px</label>
+        <label><input type="radio" value="20px" name="sfont" class="fonts">20px</label>
+        <label><input type="radio" value="30px" name="sfont" class="fonts">30px</label>
+        <label><input type="radio" value="40px" name="sfont" class="fonts">40px</label>
+    </div>
+    <div class="box">
+        글자색 <input type="color" id="tcolor" value="#000000">
+        배경색 <input type="color" id="bcolor" value="#000000">
+    </div>
+    <div class="box">
+        글꼴선택 : <label><input type="radio" value="Jua" class="fontf" name="ffont">Jua</label>
+        <label><input type="radio" value="Nanum Pen Script" class="fontf" name="ffont">Nanum</label>
+        <label><input type="radio" value="Single Day" class="fontf" name="ffont">Single</label>
+        <label><input type="radio" value="Gamja Flower" class="fontf" name="ffont">Gamja</label>
+    </div>
+    <div id="outputbox">
+        <h2 id="output"></h6>
+    </div>
+</body>
+</html>
