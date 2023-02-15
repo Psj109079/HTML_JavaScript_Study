@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        body, body *{
+        font-family: 'Jua';
+       }
+       div.loginbox table tr{
+        height: 40px;
+       }
+       div.loginbox table tr *{
+        font-size: 20px;
+       }
+    </style>
+    <script>
+        window.onload=function(){
+            // 아이디가 저장된 배열변수
+            let memberid = ["bit701", "angel", "happy", "nice", "java"];
+            let memberpass = ["1234", "0000", "1357", "9999", "8888"];
+            // 처음 로딩 시 저장된 아이디와 체크값을 얻는다
+            let loginid = localStorage.loginid;
+            let idcheck = localStorage.idcheck;
+            // 체크값이 true 면 아이디에 값을 넣어주고 체크박스 체크
+            // 체크값이 false 면 아이디에 값을 지우고 체크박스 체크 해제
+            if(idcheck == null || idcheck == "false") {
+                // 체크 속성 제거
+                document.getElementById("chksave").removeAttribute("checked");
+                // document.getElementById("chksave").checked=false; // 위와 동일하게 동작함
+                // 아이디도 지우기
+                document.getElementById("txtid").value = "";
+            } else {
+                // 체크 속성 추가
+                // document.getElementById("chksave").setAttribute("checked", true);
+                document.getElementById("chksave").checked = true;
+                // 아이디도 지우기
+                document.getElementById("txtid").value = loginid;
+            }
+            // 로그인 버튼
+            document.getElementById("btnlogin").onclick=function(){
+
+                let id = document.getElementById("txtid").value;
+                let pass = document.getElementById("txtpass").value;
+
+                // 아이디저장 체크값을 얻는다
+                let idcheck = document.getElementById("chksave").checked;
+
+                let flag = false
+                if(id != "" && pass != "") {
+                    for(let i = 0; i < memberid.length; i++) {
+                        if(id == memberid[i]) {
+                            flag = true;
+                            if(pass == memberpass[i]) {
+                                // 페이지 이동
+                                // localStorage 에 체크값과 아이디를 저장한다
+                                localStorage.idcheck = idcheck;
+                                localStorage.loginid = id;
+                                location.href="ex1_canvas.html";
+                                break;
+                            } else {
+                                alert("비밀번호가 틀렸습니다");
+                                break;
+                            }
+                        } 
+                    }
+                    if(flag == false) {
+                        alert("아이디가 틀렸습니다");
+                    }
+                } else if(id == "") {
+                    alert("아이디를 입력해주세요");
+                } else if(pass == ""){
+                    alert("비밀번호를 입력해주세요");
+                }
+                
+                // let ididx = -1;
+                // for(let i = 0; i < memberid.length; i++){
+                //     if(id == memberid[i]){
+                //         ididx = i;
+                //         break;
+                //     }
+                // }
+                // // for문 안에서 아이디를 못찾았을 경우 if 문 자체가 실행이 안되므로
+                // // ididx = 초기값인 -1 이된다
+                // if(ididx == -1){
+                //     alert("회원이 아닙니다.");
+                // }else {
+                //     // password 체크
+                //     if(pass == memberpass[ididx]) {
+                //         // localStorage 에 체크값과 아이디를 저장한다
+                //         localStorage.idcheck = idcheck;
+                //         localStorage.loginid = id;
+                //         location.href="ex1_canvas.html";
+                //     } else {
+                //         alert("비밀번호가 틀렸습니다");
+                //     }
+                // }
+
+                // if(id == "bit701" && pass == "1234") {
+                //     // 페이지 이동
+                //     location.href="ex1_canvas.html";
+                //     // localStorage 에 체크값과 아이디를 저장한다
+                //     localStorage.idcheck = idcheck;
+                //     localStorage.loginid = id;
+                // } else {
+                //     alert("아이디 또는 비밀번호가 틀렸습니다");
+                // }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div class="loginbox">
+        <table border="1" style="border-collapse: collapse;">
+            <caption><b>회원 로그인</b></caption>
+            <tr>
+                <th colspan="2">
+                <label><input type="checkbox" id="chksave">아이디 저장</label>
+                </th>
+            </tr>
+            <tr>
+                <th bgcolor="lightgray" width="100">아이디</th>
+                <td width="200">
+                    <input type="text" id="txtid" placeholder="아이디" autofocus>
+                </td>
+            </tr>
+            <tr>
+                <th bgcolor="lightgray" width="100">비밀번호</th>
+                <td width="200">
+                    <input type="password" id="txtpass" placeholder="비밀번호">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="button" id="btnlogin">회원 로그인</button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</body>
+</html>
