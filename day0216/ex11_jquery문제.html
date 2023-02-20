@@ -31,12 +31,14 @@
             // 5. ul 아래의 모든 li의 글꼴, 글자색 변경
             $("ul li").css({
                 "font-family" : "Single Day",
-                "color" : "blue"
+                "color" : "blue",
+                "width" : "130px"
             });
             // 6. ul의 li에 마우스를 올리면 글자색이 빨강으로 벗어나면 다시 원래색으로 변경
             $("ul li").mouseover(function(){
                 $(this).css({
                     "color" : "red"
+
                 });
             });
             $("ul li").mouseout(function(){
