@@ -71,17 +71,21 @@
 
         
         // 마우스를 div.one 아래의 h2에 마우스를 올리면
-        $("div.one .bit h2").mouseover(function(){
+        $("div.one .bit h2").hover(function(){
             // 그 다음 h4태그로부터 color값을 얻어서 h2의 배경색으로 지정
             $(this).css("background-color", $(this).next().attr("color"));
 
             // 마우스 위치 위의 사진을 우측 사진에 나오게 하고
+            // 부모 태그의 형제중 img태그의 속성 src를 얻는다
             $("div.two img").attr("src",$(this).parent().prev().attr("src"));
             $("div.two img").css("float", "right");
 
             // 아래의 h4, 위의 h3 값을 얻어서 우측 태그에 넣기
             $("div.two h2").text($(this).next().text());
             $("div.two h3").text($(this).parent().prev().prev().text());
+        },function(){
+            $(this).css("background-color", "#ffffff");
+
         });
     </script>
 </body>
