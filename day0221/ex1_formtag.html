@@ -15,6 +15,85 @@
     </style>
 </head>
 <body>
+    <form>
+        <legend>폼태그 연습-text,checkbox등</legend>
+        <table class="table table-bordered" style="width: 400px;">
+            <tr>
+                <th width="100" bgcolor="orange">이름</th>
+                <td>
+                    <input type="text" id="txtname" placeholder="input name" autofocus class="form-control" required>
+                </td>
+            </tr>
+            <tr>
+                <th width="100" bgcolor="orange">운전면허</th>
+                <td>
+                    <label>
+                        <input type="checkbox" id="chklic" class="form-check-input">운전면허
+                        
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <th width="100" bgcolor="orange">글자색</th>
+                <td>
+                    <label>
+                        <input type="color" id="tcolor" value="#ccffff">
+                        
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <th width="100" bgcolor="orange">생년월일</th>
+                <td>
+                    <label>
+                        <input type="date" id="birth" value="2023-01-01">
+                        
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <th width="100" bgcolor="orange">점수</th>
+                <td>
+                    <label>
+                        <input type="number" id="score" value="50" step="5" class="form-control">
+                        
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" class="btn btn-outline-danger" style="width: 100px;">데이터 읽기</button>
+                </td>
+            </tr>
+        </table>
+    </form>
     
+    <script>
+        $("form").submit(function(e){
+            // 기본 이벤트를 무효화
+            // (form의 기본이벤트는 action이 호출되며 벡엔드로 form 데이터를 넘겨주는 역할)
+            e.preventDefault(); 
+            // alert("submit");
+
+            // $("div.view").text(""); // 일단 안의 데이터 지우고 출력
+            let name = $("#txtname").val();
+            // 체크박스 value 값과 체크상태 알아보기
+            // checkbox 는 val() 은 무조건 on(value 지정이 안된경우)
+            // is(":checked") : true/false 체크상태 반환
+            console.log($("#chklic").val(),$("#chklic").is(":checked"));
+
+            // 글자색 읽기
+            let tcolor = $("#tcolor").val();
+            $("div.view").html(
+                `이름 : ${name}<br>
+                운전면혀 : ${$("#chklic").is(":checked")? "있음" : "없음"}<br>
+                글자색 : ${tcolor}<br>
+                생년월일 : ${$("#birth").val()}<br>
+                점수 : ${$("#score").val()}
+                `
+            ).css("color", tcolor);
+        });
+    </script>
+    <div class="view alert alert-info" style="width: 400px;"></div>
 </body>
 </html>
