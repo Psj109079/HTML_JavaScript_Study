@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Single+Day&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <style>
+       body, body *{
+            font-family: 'Single Day';
+        }
+        div.mytooltip{
+            line-height: 1.5;
+            color: black;
+            width: 200px;
+            background-color: #ff9900;
+            border: 2px solid white;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 30px;
+            position: absolute;
+            opacity: 0.8;
+            /* display: none; */
+        }
+        ol.today li{
+            cursor: pointer;
+            font-size: 22px;
+        }
+        ol.today li:hover{
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <script>
+        $(function(){
+            $("a").bind({
+                mousemove:function(e){
+                    console.log(e.pageX, e.pageY);
+                    $("div.mytooltip").css({
+                        "left":e.pageX+"px",
+                        "top":e.pageY+"px"
+                    });
+                }, mouseover:function(){
+                    $("div.mytooltip").fadeIn("fast");
+                    $("div.mytooltip").html(`
+                    Java<br>
+                    HTML5<br>
+                    CSS<br>
+                    Mysql`).css("background-color", "#ff9900");
+                }, mouseout:function(){
+                    $("div.mytooltip").fadeOut("fast");
+                }
+            });
+
+            $("b.view").bind({
+                mouseover:function(){
+                    // 태그에 들어있는 색상얻기
+                    let color = $(this).attr("color");
+                    let text = $(this).text();
+                    $("div.mytooltip").css("background-color", color).html(text);
+                    $("div.mytooltip").fadeIn();
+                }, mouseout:function(){
+                    $("div.mytooltip").fadeOut();
+                }, mousemove:function(e){
+                    $("div.mytooltip").css({
+                        "left":e.pageX+"px",
+                        "top":e.pageY+"px"
+                    });
+                }
+            });
+            $(".today li").bind({
+                mousemove:function(e){
+                    $("div.mytooltip").css({
+                        "left":e.pageX+"px",
+                        "top":e.pageY+"px"
+                    });
+                }, mouseenter:function(){
+                    $("div.mytooltip").html(`${$(this).text()}<br><img src="${$(this).attr("photo")}" style="width:70px;">`).show();
+                }, mouseleave:function(){
+                    $("div.mytooltip").hide();
+                }   
+            });
+        });
+    </script>
+</head>
+<body>
+    <h4 class="alert alert-info">Tooltip 링크 부분에 마우스를 올려보세요</h4>
+    <br><br>
+    <a style="font-size: 25px; cursor: pointer;">
+        TooltipTooltipTooltipTooltipTooltipTooltip
+    </a>
+    <pre>
+        경북 포항시 북구 흥해읍 칠포리 야선에서 비행 연습을 하던 페러글라이딩 <b class="view" color="pink">조종사가 고압선에 걸렸다 구조됐다.</b>
+        24일 포항북부소방서 등에 따르면 지인과 함께 비행에 나섰던 <b class="view" color="green">50대 A씨가 바람에 밀려 산 주변에 있던 6m높이의 고압선에 걸렸다.</b>
+        신고를 받은 <b class="view" color="blue">소방당국은</b> <b class="view" color="yellow">119구조대는 한전의 협조로 전류를 차단한 후 A씨를 안전하게 구조했다.</b>
+    </pre>
+    <hr>
+    <h2>오늘 나의 식사 및 쇼핑 목록입니다.</h2>
+    <ol type="1" class="today">
+        <li photo="../image/food/1.jpg">에그샌드위치</li>
+        <li photo="../image/food/11.jpg">망고빙수</li>
+        <li photo="../image/shop/8.jpg">꽈배기회색스웨터</li>
+        <li photo="../image/shop/29.jpg">여름용모자</li>
+    </ol>
+    <div class="mytooltip">
+    </div>
+</body>
+</html>
