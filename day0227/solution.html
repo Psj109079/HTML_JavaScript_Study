@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+</head>
+<body>
+    점수1<input type="text" class="grade">
+    점수2<input type="text" class="grade">
+    점수3<input type="text" class="grade">
+    <button type="button" id="btn">계산</button>
+    <div id="result" style="width: 300; height: 300; margin-top: 50px;">3</div>
+    <script>
+        
+        $("#btn").click(function(){
+            let sum = 0;
+            for(let i = 0; i < $(".grade").length; i++){
+                if(isNaN($(".grade").eq(i).val()) == true || $(".grade").eq(i).val() == ""){
+                    alert("숫자만 입력");
+                    return;
+                } else {
+                    sum += Number($(".grade").eq(i).val());
+                }
+            }
+            $("#result").html(`<h3>합계: ${sum}</h3><br><h3>평균: ${sum / 3}</h3>`)
+        });
+    </script>
+    
+</body>
+</html>
